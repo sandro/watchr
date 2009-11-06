@@ -26,6 +26,7 @@ module Watchr
       @script  = script
       @handler = handler
       @handler.add_observer(self)
+      @handler.controller = self
 
       Watchr.debug "using %s handler" % handler.class.name
     end
@@ -58,6 +59,10 @@ module Watchr
       else
         @script.action_for(path, event_type).call
       end
+    end
+
+    def update_monitored_paths
+      @handler.refresh(monitored_paths)
     end
 
     # List of paths the script is monitoring.

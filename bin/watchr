@@ -3,7 +3,7 @@
 require 'pathname'
 require 'optparse'
 
-require 'watchr'
+require File.dirname(__FILE__) + '/../lib/watchr'
 
 module Watchr
   # Namespaced to avoid defining global methods
